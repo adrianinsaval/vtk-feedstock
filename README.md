@@ -26,9 +26,7 @@ Current release info
 
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vtk-green.svg)](https://anaconda.org/freecad/vtk) | [![Conda Downloads](https://img.shields.io/conda/dn/freecad/vtk.svg)](https://anaconda.org/freecad/vtk) | [![Conda Version](https://img.shields.io/conda/vn/freecad/vtk.svg)](https://anaconda.org/freecad/vtk) | [![Conda Platforms](https://img.shields.io/conda/pn/freecad/vtk.svg)](https://anaconda.org/freecad/vtk) |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-vtk--base-green.svg)](https://anaconda.org/freecad/vtk-base) | [![Conda Downloads](https://img.shields.io/conda/dn/freecad/vtk-base.svg)](https://anaconda.org/freecad/vtk-base) | [![Conda Version](https://img.shields.io/conda/vn/freecad/vtk-base.svg)](https://anaconda.org/freecad/vtk-base) | [![Conda Platforms](https://img.shields.io/conda/pn/freecad/vtk-base.svg)](https://anaconda.org/freecad/vtk-base) |
-| [![Conda Recipe](https://img.shields.io/badge/recipe-vtk--io--ffmpeg-green.svg)](https://anaconda.org/freecad/vtk-io-ffmpeg) | [![Conda Downloads](https://img.shields.io/conda/dn/freecad/vtk-io-ffmpeg.svg)](https://anaconda.org/freecad/vtk-io-ffmpeg) | [![Conda Version](https://img.shields.io/conda/vn/freecad/vtk-io-ffmpeg.svg)](https://anaconda.org/freecad/vtk-io-ffmpeg) | [![Conda Platforms](https://img.shields.io/conda/pn/freecad/vtk-io-ffmpeg.svg)](https://anaconda.org/freecad/vtk-io-ffmpeg) |
 
 Installing vtk
 ==============
@@ -40,41 +38,41 @@ conda config --add channels freecad/label/dev
 conda config --set channel_priority strict
 ```
 
-Once the `freecad/label/dev` channel has been enabled, `vtk, vtk-base, vtk-io-ffmpeg` can be installed with `conda`:
+Once the `freecad/label/dev` channel has been enabled, `vtk-base` can be installed with `conda`:
 
 ```
-conda install vtk vtk-base vtk-io-ffmpeg
-```
-
-or with `mamba`:
-
-```
-mamba install vtk vtk-base vtk-io-ffmpeg
-```
-
-It is possible to list all of the versions of `vtk` available on your platform with `conda`:
-
-```
-conda search vtk --channel freecad/label/dev
+conda install vtk-base
 ```
 
 or with `mamba`:
 
 ```
-mamba search vtk --channel freecad/label/dev
+mamba install vtk-base
+```
+
+It is possible to list all of the versions of `vtk-base` available on your platform with `conda`:
+
+```
+conda search vtk-base --channel freecad/label/dev
+```
+
+or with `mamba`:
+
+```
+mamba search vtk-base --channel freecad/label/dev
 ```
 
 Alternatively, `mamba repoquery` may provide more information:
 
 ```
 # Search all versions available on your platform:
-mamba repoquery search vtk --channel freecad/label/dev
+mamba repoquery search vtk-base --channel freecad/label/dev
 
-# List packages depending on `vtk`:
-mamba repoquery whoneeds vtk --channel freecad/label/dev
+# List packages depending on `vtk-base`:
+mamba repoquery whoneeds vtk-base --channel freecad/label/dev
 
-# List dependencies of `vtk`:
-mamba repoquery depends vtk --channel freecad/label/dev
+# List dependencies of `vtk-base`:
+mamba repoquery depends vtk-base --channel freecad/label/dev
 ```
 
 

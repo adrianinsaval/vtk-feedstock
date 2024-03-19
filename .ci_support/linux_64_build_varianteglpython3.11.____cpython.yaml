@@ -1,5 +1,5 @@
 build_variant:
-- osmesa
+- egl
 cdt_name:
 - cos7
 channel_sources:
@@ -42,10 +42,16 @@ libxml2:
 - '2'
 lz4_c:
 - 1.9.3
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
 proj:
 - 9.3.1
 pugixml:
 - '1.14'
+python:
+- 3.11.* *_cpython
 qt_main:
 - '5.15'
 sqlite:
