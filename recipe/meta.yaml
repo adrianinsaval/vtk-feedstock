@@ -1,5 +1,5 @@
 {% set version = "9.2.6" %}
-{% set build = 21 %}
+{% set build = 22 %}
 
 {% set minor_version = ".".join(version.split(".")[:2]) %}
 
@@ -57,7 +57,7 @@ outputs:
         - sysroot_linux-64 2.17  # [build_variant == "osmesa"]
         - cmake
         - ninja
-        - python=3.11                                 # [build_platform != target_platform]
+        - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - {{ cdt('libselinux') }}  # [linux and build_variant != "osmesa"]
         - {{ cdt('mesa-libgl-devel') }}  # [linux and build_variant != "osmesa"]
@@ -67,7 +67,7 @@ outputs:
         - {{ cdt('mesa-libgbm') }}  # [build_variant == "egl"]
 
       host:
-        - python=3.11
+        - python
         - zlib
         - freetype
         - hdf5
@@ -117,7 +117,7 @@ outputs:
         - qt-main  # [not ppc64le and (build_variant == "qt")]
 
       run:
-        - python=3.11
+        - python
         - zlib
         - freetype
         - hdf5
