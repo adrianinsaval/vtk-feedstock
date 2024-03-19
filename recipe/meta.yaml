@@ -32,6 +32,7 @@ source:
 build:
   number: {{ build }}
   string: {{ build_string }}
+  skip: true # [py != 311]
 
 outputs:
   - name: vtk-base
