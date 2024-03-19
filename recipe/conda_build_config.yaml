@@ -1,3 +1,7 @@
+channel_sources:
+- freecad,conda-forge
+channel_targets:
+- freecad devs
 # clang 16 errors on incompatible function pointers
 c_compiler_version:     # [osx]
   - 15                  # [osx]

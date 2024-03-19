@@ -67,7 +67,7 @@ outputs:
         - {{ cdt('mesa-libgbm') }}  # [build_variant == "egl"]
 
       host:
-        - python
+        - python=3.11
         - zlib
         - freetype
         - hdf5
