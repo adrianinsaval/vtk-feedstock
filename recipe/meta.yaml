@@ -1,5 +1,5 @@
 {% set version = "9.2.6" %}
-{% set build = 20 %}
+{% set build = 21 %}
 
 {% set minor_version = ".".join(version.split(".")[:2]) %}
 
@@ -77,7 +77,6 @@ outputs:
         - libjpeg-turbo
         - libtiff
         - jsoncpp
-        - expat
         - tbb
         - tbb-devel
         - mesalib >=21.0  # [build_variant == "osmesa"]
@@ -127,7 +126,6 @@ outputs:
         - libjpeg-turbo
         - libtiff
         - jsoncpp
-        - expat
         - tbb
         - mesalib >=21.0  # [build_variant == "osmesa"]
         - libnetcdf
