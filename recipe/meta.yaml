@@ -1,10 +1,10 @@
 {% set version = "9.3.1" %}
-{% set build = 9 %}
+{% set build = 0 %}
 
 {% set minor_version = ".".join(version.split(".")[:2]) %}
 
 {% set build = build + 100 %}   # [build_variant == "osmesa"]
-{% set build = build + 200 %}   # [build_variant == "qt"]
+{% set build = build + 200 %}   # [build_variant == "qt5"]
 # typically, osmesa is selected by installing or not installing
 # mesalib, but it could also be selected via the build string:
 # `vtk * osmesa*` for osmesa
@@ -53,13 +53,13 @@ outputs:
     requirements:
       build:
         - {{ compiler("cxx") }}
-        - {{ compiler('fortran') }}  # [build_variant != "qt"]
+        - {{ compiler('fortran') }}  # [build_variant != "qt5"]
         - {{ stdlib("c") }}
         - cmake
         - ninja
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - qt6-main                               # [build_platform != target_platform]
+        - qt-main                               # [build_platform != target_platform]
         - {{ cdt('libselinux') }}  # [linux and build_variant != "osmesa"]
         - {{ cdt('mesa-libgl-devel') }}  # [linux and build_variant != "osmesa"]
         - {{ cdt('mesa-dri-drivers') }}  # [linux and build_variant != "osmesa"]
@@ -102,13 +102,13 @@ outputs:
         - xorg-libx11  # [linux and build_variant != "osmesa"]
         - xorg-xf86vidmodeproto  # [linux and build_variant != "osmesa"]
         - libboost-headers
-        - tk  # [not win and (build_variant == "qt")]
+        - tk  # [not win and (build_variant == "qt5")]
         - ffmpeg
         - utfcpp
         - eigen
         - double-conversion
         - pugixml
-        - glew  # [build_variant == "qt"]
+        - glew  # [build_variant == "qt5"]
         - libogg
         - libtheora
         - nlohmann_json
@@ -117,7 +117,7 @@ outputs:
         - sqlite
         - gl2ps
         - pugixml
-        - qt6-main  # [not ppc64le and (build_variant == "qt")]
+        - qt-main  # [not ppc64le and (build_variant == "qt5")]
 
       run:
         - python
@@ -135,12 +135,12 @@ outputs:
         - libnetcdf
         - lz4-c
         - xorg-libxt  # [linux]
-        - tk  # [not win and (build_variant == "qt")]
+        - tk  # [not win and (build_variant == "qt5")]
         - utfcpp
         - eigen
         - double-conversion
         - pugixml
-        - glew  # [build_variant == "qt"]
+        - glew  # [build_variant == "qt5"]
         - libogg
         - libtheora
         - nlohmann_json
@@ -175,7 +175,7 @@ outputs:
         - vtk.vtkRenderingVolume
         - vtk.vtkInteractionWidgets
         - vtk.vtkWebGLExporter
-        - vtk.tk.vtkTkRenderWidget  # [not win and (build_variant == "qt")]
+        - vtk.tk.vtkTkRenderWidget  # [not win and (build_variant == "qt5")]
         - vtkmodules
         - vtkmodules.vtkChartsCore
         - vtkmodules.vtkCommonCore
@@ -188,7 +188,7 @@ outputs:
         - vtkmodules.vtkInfovisCore
         - vtkmodules.vtkRenderingCore
         - vtkmodules.vtkViewsCore
-        - vtkmodules.vtkRenderingQt  # [build_variant == "qt"]
+        - vtkmodules.vtkRenderingQt  # [build_variant == "qt5"]
         - vtkmodules.vtkRenderingVolume
         - vtkmodules.vtkInteractionWidgets
         - vtkmodules.vtkWebCore
@@ -206,9 +206,9 @@ outputs:
             "vtkRenderingQt"
         ] %}
         {% for vtk_lib in vtk_qt_libs %}
-        - test -f $PREFIX/lib/lib{{ vtk_lib }}-{{ minor_version }}${SHLIB_EXT}  # [not win and (build_variant == "qt")]
-        - if not exist %PREFIX%\\Library\\lib\\{{ vtk_lib }}-{{ minor_version }}.lib exit 1  # [win and (build_variant == "qt")]
-        - if not exist %PREFIX%\\Library\\bin\\{{ vtk_lib }}-{{ minor_version }}.dll exit 1  # [win and (build_variant == "qt")]
+        - test -f $PREFIX/lib/lib{{ vtk_lib }}-{{ minor_version }}${SHLIB_EXT}  # [not win and (build_variant == "qt5")]
+        - if not exist %PREFIX%\\Library\\lib\\{{ vtk_lib }}-{{ minor_version }}.lib exit 1  # [win and (build_variant == "qt5")]
+        - if not exist %PREFIX%\\Library\\bin\\{{ vtk_lib }}-{{ minor_version }}.dll exit 1  # [win and (build_variant == "qt5")]
         {% endfor %}
 
   - name: vtk-io-ffmpeg
