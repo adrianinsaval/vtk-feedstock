@@ -55,7 +55,7 @@ elif [[ "$build_variant" == "egl" ]]; then
         "-DEGL_opengl_LIBRARY:FILEPATH=${BUILD_PREFIX}/${HOST}/sysroot/usr/lib64/libGL.so"
         "-DOPENGL_opengl_LIBRARY:FILEPATH=${BUILD_PREFIX}/${HOST}/sysroot/usr/lib64/libGL.so"
     )
-elif [[ "$build_variant" == "qt" ]]; then
+elif [[ "$build_variant" == "qt5" ]]; then
     TCLTK_VERSION=`echo 'puts $tcl_version;exit 0' | tclsh`
 
     VTK_ARGS+=(
@@ -80,7 +80,7 @@ elif [[ "$build_variant" == "qt" ]]; then
 fi
 
 if [[ "$target_platform" != "linux-ppc64le"
-        && "$build_variant" == "qt" ]]; then
+        && "$build_variant" == "qt5" ]]; then
     VTK_ARGS+=(
         "-DVTK_MODULE_ENABLE_VTK_GUISupportQt:STRING=YES"
         "-DVTK_MODULE_ENABLE_VTK_RenderingQt:STRING=YES"
