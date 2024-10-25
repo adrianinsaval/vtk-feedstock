@@ -1,3 +1,7 @@
+channel_sources:
+- freecad, conda-forge
+channel_targets:
+- freecad main
 build_variant:
   - "qt"
   - "osmesa"  # [linux64]
