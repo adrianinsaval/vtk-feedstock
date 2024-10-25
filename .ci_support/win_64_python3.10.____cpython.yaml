@@ -3,15 +3,15 @@ build_variant:
 c_stdlib:
 - vs
 channel_sources:
-- conda-forge
+- freecad, conda-forge
 channel_targets:
-- conda-forge main
+- freecad main
 cxx_compiler:
 - vs2019
 expat:
 - '2'
 ffmpeg:
-- '6'
+- '7'
 freetype:
 - '2'
 glew:
@@ -19,7 +19,9 @@ glew:
 hdf5:
 - 1.14.3
 jsoncpp:
-- 1.9.5
+- 1.9.6
+libboost_headers:
+- '1.84'
 libjpeg_turbo:
 - '3'
 libnetcdf:
@@ -27,7 +29,7 @@ libnetcdf:
 libpng:
 - '1.6'
 libtiff:
-- '4.6'
+- '4.7'
 libxml2:
 - '2'
 lz4_c:
@@ -37,7 +39,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 proj:
-- 9.3.1
+- '9.5'
 pugixml:
 - '1.14'
 python:
@@ -53,6 +55,6 @@ tbb:
 tbb_devel:
 - '2021'
 vtk:
-- 9.2.6
+- 9.3.0
 zlib:
 - '1'
