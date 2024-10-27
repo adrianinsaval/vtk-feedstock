@@ -3,7 +3,7 @@ build_variant:
 c_stdlib:
 - vs
 channel_sources:
-- freecad, conda-forge
+- conda-forge
 channel_targets:
 - freecad main
 cxx_compiler:
@@ -45,7 +45,7 @@ pugixml:
 python:
 - 3.10.* *_cpython
 qt_main:
-- '5.15'
+- 5.15.8
 sqlite:
 - '3'
 target_platform:
