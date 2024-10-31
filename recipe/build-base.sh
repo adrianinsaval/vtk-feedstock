@@ -8,13 +8,13 @@ BUILD_CONFIG=Release
 PYTHON_MAJOR_VERSION=${PY_VER%%.*}
 
 if [[ "${target_platform}" =~ osx-arm64 && "${target_platform}" != "${build_platform}" ]]; then
-    rm -f "${PREFIX}/lib/qt6/moc"
-    ln -s "${BUILD_PREFIX}/lib/qt6/moc" "${PREFIX}/lib/qt6/moc"
+    rm -f "${PREFIX}/lib/qt5/moc"
+    ln -s "${BUILD_PREFIX}/lib/qt5/moc" "${PREFIX}/lib/qt5/moc"
     
     # Additional debugging information
-    echo "Adjusted Qt tools for osx-arm64 with build variant qt6"
-    echo "Removed: ${PREFIX}/lib/qt6/moc"
-    echo "Linked to: ${BUILD_PREFIX}/lib/qt6/moc"
+    echo "Adjusted Qt tools for osx-arm64 with build variant qt5"
+    echo "Removed: ${PREFIX}/lib/qt5/moc"
+    echo "Linked to: ${BUILD_PREFIX}/lib/qt5/moc"
 else
     echo "Skipping Qt tools adjustment. Target platform: ${target_platform}, Build variant: $build_variant"
 fi
@@ -55,7 +55,7 @@ elif [[ "$build_variant" == "egl" ]]; then
         "-DEGL_opengl_LIBRARY:FILEPATH=${BUILD_PREFIX}/${HOST}/sysroot/usr/lib64/libGL.so"
         "-DOPENGL_opengl_LIBRARY:FILEPATH=${BUILD_PREFIX}/${HOST}/sysroot/usr/lib64/libGL.so"
     )
-elif [[ "$build_variant" == "qt" ]]; then
+elif [[ "$build_variant" == "qt5" ]]; then
     TCLTK_VERSION=`echo 'puts $tcl_version;exit 0' | tclsh`
 
     VTK_ARGS+=(
@@ -80,7 +80,7 @@ elif [[ "$build_variant" == "qt" ]]; then
 fi
 
 if [[ "$target_platform" != "linux-ppc64le"
-        && "$build_variant" == "qt" ]]; then
+        && "$build_variant" == "qt5" ]]; then
     VTK_ARGS+=(
         "-DVTK_MODULE_ENABLE_VTK_GUISupportQt:STRING=YES"
         "-DVTK_MODULE_ENABLE_VTK_RenderingQt:STRING=YES"
