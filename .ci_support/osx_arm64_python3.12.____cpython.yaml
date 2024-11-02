@@ -15,7 +15,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '17'
+- '18'
 expat:
 - '2'
 ffmpeg:
@@ -55,7 +55,7 @@ pugixml:
 python:
 - 3.12.* *_cpython
 qt_main:
-- 5.15.8
+- '5.15'
 sqlite:
 - '3'
 target_platform:
