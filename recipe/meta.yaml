@@ -1,5 +1,5 @@
 {% set version = "9.3.0" %}
-{% set build = 2 %}
+{% set build = 3 %}
 
 {% set minor_version = ".".join(version.split(".")[:2]) %}
 
@@ -62,7 +62,7 @@ outputs:
         - ninja
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - qt-main==5.15.15                               # [build_platform != target_platform]
+        - qt-main                                # [build_platform != target_platform]
         - {{ cdt('libselinux') }}  # [linux and build_variant != "osmesa"]
         - {{ cdt('mesa-libgl-devel') }}  # [linux and build_variant != "osmesa"]
         - {{ cdt('mesa-dri-drivers') }}  # [linux and build_variant != "osmesa"]
