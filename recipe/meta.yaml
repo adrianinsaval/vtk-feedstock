@@ -242,8 +242,10 @@ outputs:
     requirements:
       build: []
       host:
-          # We use ffmpeg here in the host section so that conda build
-          # uses the global pinnings and ensures ffmpeg compatibility.
+        # We use python and ffmpeg here in the host section so that conda build
+        # uses the global pinnings and ensures compatibility, as both ffmpeg and python
+        # are dependency of the package
+        - python
         - ffmpeg
       run:
         - {{ pin_subpackage("vtk-base", exact=True) }}
@@ -257,8 +259,6 @@ outputs:
 
   - name: vtk
     build:
-      ignore_run_exports_from:
-        - ffmpeg
       string: {{ build_string }}
       run_exports:
         - {{ pin_subpackage('vtk-base', max_pin='x.x.x') }}
@@ -270,8 +270,10 @@ outputs:
         # https://github.com/conda-forge/vtk-feedstock/issues/347
         - ffmpeg
       run:
-        - {{ pin_subpackage("vtk-base", exact=True) }}
-        - {{ pin_subpackage("vtk-io-ffmpeg", exact=True) }}  # [not win]
+        # The pin_subpackage is not exact to avoid issues like https://github.com/conda-forge/vtk-feedstock/issues/347
+        # and https://github.com/conda-forge/vtk-feedstock/issues/372
+        - {{ pin_subpackage("vtk-base", max_pin='x.x.x') }}
+        - {{ pin_subpackage("vtk-io-ffmpeg", max_pin='x.x.x') }}  # [not win]
     test:
       requires:
         - pip
