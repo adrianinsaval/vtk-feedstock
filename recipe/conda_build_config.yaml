@@ -1,5 +1,5 @@
 channel_sources:
-- conda-forge
+- freecad,conda-forge
 channel_targets:
 - freecad main
 build_variant:

@@ -11,7 +11,7 @@ cdt_arch:
 cdt_name:
 - cos7
 channel_sources:
-- conda-forge
+- freecad,conda-forge
 channel_targets:
 - freecad main
 cxx_compiler:
