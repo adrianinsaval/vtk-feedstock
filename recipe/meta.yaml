@@ -272,10 +272,8 @@ outputs:
         # https://github.com/conda-forge/vtk-feedstock/issues/347
         - ffmpeg
       run:
-        # The pin_subpackage is not exact to avoid issues like https://github.com/conda-forge/vtk-feedstock/issues/347
-        # and https://github.com/conda-forge/vtk-feedstock/issues/372
-        - {{ pin_subpackage("vtk-base", max_pin='x.x.x') }}
-        - {{ pin_subpackage("vtk-io-ffmpeg", max_pin='x.x.x') }}  # [not win]
+        - {{ pin_subpackage("vtk-base", exact=True) }}
+        - {{ pin_subpackage("vtk-io-ffmpeg", exact=True) }}  # [not win]
     test:
       requires:
         - pip
