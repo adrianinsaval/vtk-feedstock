@@ -1,5 +1,5 @@
 {% set version = "9.3.0" %}
-{% set build = 4 %}
+{% set build = 5 %}
 
 {% set minor_version = ".".join(version.split(".")[:2]) %}
 
@@ -44,6 +44,7 @@ outputs:
       script: "%RECIPE_DIR%\\bld-base.bat"  # [win]
       ignore_run_exports:
         - ffmpeg  # [not win]
+        - harfbuzz  # [not win]
         # Found via inspection of the conda-forge logs, hopefully okay to ignore:
         - xorg-libxext  # [linux]
         - xorg-libxxf86vm  # [linux]
@@ -128,6 +129,7 @@ outputs:
         - libboost-headers
         - tk  # [not win and (build_variant == "qt5")]
         - ffmpeg
+        - harfbuzz==9 # [not win]
         - utfcpp
         - eigen
         - double-conversion
@@ -249,6 +251,7 @@ outputs:
         # are dependency of the package
         - python
         - ffmpeg
+        - harfbuzz==9
       run:
         - {{ pin_subpackage("vtk-base", exact=True) }}
         - ffmpeg
@@ -271,6 +274,7 @@ outputs:
         # ffmpeg==6 and ffmpeg==7 builds, avoiding the issue described in
         # https://github.com/conda-forge/vtk-feedstock/issues/347
         - ffmpeg
+        - harfbuzz==9  # [not win]
       run:
         - {{ pin_subpackage("vtk-base", exact=True) }}
         - {{ pin_subpackage("vtk-io-ffmpeg", exact=True) }}  # [not win]

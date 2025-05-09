@@ -2,8 +2,10 @@ channel_sources:
 - freecad,conda-forge
 channel_targets:
 - freecad main
+harfbuzz:
+- '9'
 build_variant:
-  - "qt5"
+- "qt5"
 replacements:
   all_replacements:
     - tag: 'CMake build metadata'
